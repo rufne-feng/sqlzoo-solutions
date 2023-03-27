@@ -88,20 +88,16 @@ select name, ROUND(gdp/population,-3) from world
 ### Harder Questions:
 11.
 ```sql
-SELECT name,
-       CASE WHEN continent='Oceania' THEN 'Australasia'
-            ELSE continent END
-  FROM world
- WHERE name LIKE 'N%'
+SELECT name, capital
+FROM countries
+WHERE LEN(name) = LEN(capital)
 ```
 12.
 ```sql
-SELECT name,
-       CASE WHEN continent='Europe' or continent='Asia' THEN 'Eurasia'
-            WHEN continent in ('North America','South America','Caribbean') THEN 'America'   
-            ELSE continent END
-  FROM world
- WHERE name LIKE 'A%' or name LIKE 'B%'
+SELECT name, capital
+  FROM countries
+  WHERE LEFT(name, 1) = LEFT(capital, 1)
+  AND name <> capital;
 ```
 13.(this one was a doozy)
 
